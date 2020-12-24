@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ListViewDemo</string>
+
+    <string name="repository_name">Repository Name: %s</string>
+    <string name="repository_owner">Repository Owner: %s</string>
+    <string name="repository_description">Repository Description: %s</string>
+    <string name="is_site_admin">Is Site Admin: %b</string>
+    <string name="is_forked">Is Forked: %b</string>
 </resources>

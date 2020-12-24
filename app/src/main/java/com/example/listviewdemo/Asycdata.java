@@ -26,13 +26,17 @@ public class Asycdata extends AsyncTask<String, String, List<Repository>> {
         try {
             JSONArray jsonArray = new JSONArray(json);
             for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                String repositoryName = jsonObject.getString("full_name");
-                JSONObject ownerObject = jsonObject.getJSONObject("owner");
+                JSONObject repositoryObject = jsonArray.getJSONObject(i);
+                String repositoryName = repositoryObject.getString("full_name");
+                String description = repositoryObject.getString("description");
+                boolean fork = repositoryObject.getBoolean("fork");
+
+                JSONObject ownerObject = repositoryObject.getJSONObject("owner");
                 String ownerName = ownerObject.getString("login");
+                boolean siteAdmin = ownerObject.getBoolean("site_admin");
 
                 if (!TextUtils.isEmpty(repositoryName) && !TextUtils.isEmpty(ownerName)) {
-                    repositories.add(new Repository(repositoryName, ownerName));
+                    repositories.add(new Repository(repositoryName, ownerName, description, fork, siteAdmin));
                 }
             }
 

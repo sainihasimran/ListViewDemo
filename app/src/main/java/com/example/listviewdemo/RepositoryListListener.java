@@ -2,7 +2,7 @@ package com.example.listviewdemo;
 
 import java.util.List;
 
-interface RepositoryListListener {
+public interface RepositoryListListener {
 
     void onRepositoriesFetched(List<Repository> repositories);
 

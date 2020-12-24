@@ -1,9 +1,11 @@
 package com.example.listviewdemo;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +27,15 @@ public class MainActivity extends AppCompatActivity implements RepositoryListLis
 
         rootView = findViewById(R.id.rootView);
         listView = findViewById(R.id.listView);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Repository repository = (Repository) parent.getItemAtPosition(position);
+                Intent intent = DetailActivity.getCallingIntent(MainActivity.this, repository);
+                MainActivity.this.startActivity(intent);
+            }
+        });
 
         loadingDialog = new AlertDialog.Builder(this)
                 .setView(R.layout.layout_loading)

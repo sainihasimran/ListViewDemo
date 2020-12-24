@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import java.util.List;
 
-class RepositoryAdapter extends ArrayAdapter<Repository> {
+public class RepositoryAdapter extends ArrayAdapter<Repository> {
 
     public RepositoryAdapter(@NonNull Context context, @NonNull List<Repository> repositories) {
         super(context, 0, repositories);
